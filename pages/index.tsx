@@ -3,7 +3,26 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
+import { useRouter } from "next/router";
+import { useAccount } from "wagmi";
+import { useEffect } from 'react';
+
+
 const Home: NextPage = () => {
+
+  const { isConnected } = useAccount();
+  const router = useRouter();
+  
+  // ***
+  // Uncomment this code to redirect after login with the wallet.
+  // ****
+  //
+  // useEffect(() => {
+  //   if(isConnected){
+  //     router.push('/page-to-redirect')
+  //   }
+  // },[isConnected]);
+
   return (
     <div className={styles.container}>
       <Head>
