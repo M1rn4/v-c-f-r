@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css';
 import { useRouter } from "next/router";
 import { useAccount } from "wagmi";
 import { useEffect } from 'react';
+import VerityText from '../components/verify';
 
 
 
@@ -37,9 +38,9 @@ const Home: NextPage = () => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <main className={styles.main}>
-            <ConnectButton />  
-            {/* hacer la llamada del componente  y y hacer la condicion de isConnet  es true abrir el component si es false no abrir*/}
-           {/*  <VerityText/>  */}
+            <ConnectButton /> {isConnected ? <VerityText/> : null 
+            } 
+
           </main>
     
         
