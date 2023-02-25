@@ -16,7 +16,7 @@ function SearchContent() {
           </Head>
     
           <main className={styles.main}>
-            <ConnectButton />
+          {/*   <ConnectButton /> */}
     
             <h1 className={styles.title}>
               Welcome to <a href="">VerifiedChain</a> 
