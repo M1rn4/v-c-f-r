@@ -1,17 +1,22 @@
-type FormButtonProps = {
-  isLoading?: boolean;
-  buttonText: string;
-  onClick?: () => void;
-};
+import React from 'react';
 
-const FormButton = ({ buttonText, isLoading, onClick }: FormButtonProps) => {
+interface FormButtonProps {
+  buttonText: string;
+  isLoading: boolean;
+  className?: string; // <- Definimos className como opcional
+}
+
+function FormButton(props: FormButtonProps) {
+  const { buttonText, isLoading, className } = props;
   return (
-    <div style={{ marginTop: '1rem' }}>
-      <button type="submit" disabled={isLoading} onClick={onClick} style={{ backgroundColor: '#319795', color: 'white', padding: '0.5rem 1rem', borderRadius: '4px', border: 'none', cursor: isLoading ? 'not-allowed' : 'pointer' }}>
-        {isLoading ? 'Enviando...' : buttonText}
-      </button>
-    </div>
+    <button
+      type='submit'
+      disabled={isLoading}
+      className={className}
+    >
+      {isLoading ? 'Cargando...' : buttonText}
+    </button>
   );
-};
+}
 
 export default FormButton;
