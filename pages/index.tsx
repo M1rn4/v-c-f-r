@@ -21,11 +21,11 @@ const Home: NextPage = () => {
   // Uncomment this code to redirect after login with the wallet.
   // ****
   //
-  // useEffect(() => {
-  //   if(isConnected){
-  //     router.push('/page-to-redirect')
-  //   }
-  // },[isConnected]);
+  /*  useEffect(() => {
+     if(isConnected)
+      router.push('/page-to-redirect')
+     }
+   },[isConnected]); */
 
   return (
     <div className={styles.container}>
@@ -38,12 +38,8 @@ const Home: NextPage = () => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <main className={styles.main}>
-            <ConnectButton /> {isConnected ? <VerityText/> : null 
-            } 
-
+            <ConnectButton /> {isConnected ? <VerityText/> : null } 
           </main>
-    
-        
     </div>
   );
 };
