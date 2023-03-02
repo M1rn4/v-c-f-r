@@ -6,7 +6,9 @@ import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, goerli, polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-import VerityText from '../components/verify';
+import { ChakraProvider } from "@chakra-ui/react"
+import { extendTheme } from "@chakra-ui/react"
+
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -22,8 +24,8 @@ const { chains, provider, webSocketProvider } = configureChains(
     alchemyProvider({
       // This is Alchemy's default API key.
       // You can get your own at https://dashboard.alchemyapi.io
-     // apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY!,
-     apiKey: 's7wys4NVZ4xoRFUvCtgV5tnjH7x9knTg'
+      // apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY!,
+      apiKey: 's7wys4NVZ4xoRFUvCtgV5tnjH7x9knTg'
     }),
     publicProvider(),
   ]
@@ -41,13 +43,24 @@ const wagmiClient = createClient({
   webSocketProvider,
 });
 
+const theme = extendTheme({
+  fonts: {
+    heading: "Inter",
+    body: "Inter",
+  },
+})
+
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />   
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <ChakraProvider theme={theme}>
+      <WagmiConfig client={wagmiClient}>
+        <RainbowKitProvider chains={chains}>
+          <Component {...pageProps} />
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </ChakraProvider>
+
   );
 }
 
